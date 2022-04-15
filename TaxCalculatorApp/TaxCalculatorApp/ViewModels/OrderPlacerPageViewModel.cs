@@ -115,7 +115,7 @@ namespace TaxCalculatorApp.ViewModels
                     return;
                 }
                 DecOrderAmount = Decimal.Parse(StrOrderAmount);
-                if (!String.IsNullOrEmpty(StrOrderAmount) && Decimal.Parse(StrOrderAmount) >= 0)
+                if (!String.IsNullOrEmpty(StrOrderAmount) && Decimal.Parse(StrOrderAmount) > 0)
                 {
                     OrderAmount customerOrder = new OrderAmount
                     {

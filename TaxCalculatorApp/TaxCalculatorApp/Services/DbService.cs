@@ -13,7 +13,7 @@ namespace TaxCalculatorApp.Services
         {
             var config = new RealmConfiguration
             {
-                SchemaVersion = 3,
+                SchemaVersion = 5,
                 MigrationCallback = (migration, oldSchemaVersion) =>
                 {
                 }

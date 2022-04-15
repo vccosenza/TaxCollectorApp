@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:TaxCalculatorApp.ViewModels"
+             x:DataType="viewmodel:OrderSummaryPageViewModel"
+             x:Class="TaxCalculatorApp.Views.OrderSummaryPage">
+    <ContentPage.BindingContext>
+        <viewmodel:OrderSummaryPageViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout Padding="10">
+        <Label Text="Order Summary" FontSize="Title" FontAttributes="Bold" TextColor="DarkOliveGreen"
+               VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+        <Frame BackgroundColor="Transparent" BorderColor="Olive" 
+               Margin="10,0,10,0">
+            <Grid Padding="10,0,10,0">
+                <Grid.RowDefinitions Height="*"/>
+                <Grid.ColumnDefinitions Width="*,*"/>
+                <Label Text="Shipping To:" FontSize="Small" Grid.Column="0" Grid.ColumnSpan="1"
+               Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding ShippingAddress}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1"
+               FontSize="Small" FontAttributes="Bold" LineBreakMode="TailTruncation"              
+               VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+            </Grid>
+        </Frame>
+        <Button Text="Update Shipping Address" Margin="10"
+               Style="{StaticResource BaseButton}" Command="{Binding UpdateShippingAddressCommand}"/>
+        <Frame Margin="10,0,10,0" BackgroundColor="Transparent" BorderColor="Olive">
+            <Grid Padding="10,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".05*"/>
+                    <RowDefinition Height=".05*"/>
+                    <RowDefinition Height=".05*"/>
+                    <RowDefinition Height=".05*"/>
+                    <RowDefinition Height=".05*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Items:" FontSize="Small" Grid.Column="0" Grid.ColumnSpan="1"
+               Grid.Row="0" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding OrderAmount, StringFormat='${0}'}" FontSize="Small" Grid.Column="1" Grid.ColumnSpan="1"
+               Grid.Row="0" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                <Label Text="Shipping:" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1"
+               FontSize="Small" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding ShippingAmount, StringFormat='${0}'}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"
+               FontSize="Small" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                <Label Text="Total before Tax:" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1"
+               FontSize="Small" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding OrderAmount, StringFormat='${0}'}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"
+               FontSize="Small" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                <Label Text="Tax to be Collected:" Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="1"
+               FontSize="Small" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding TaxAmount, StringFormat='${0}'}" Grid.Row="3" Grid.Column="1"  Grid.ColumnSpan="1"
+               FontSize="Small" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                <Label Text="Order Total:" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1"
+               FontSize="Large" FontAttributes="Bold" 
+               VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding TotalAmount, StringFormat='${0}'}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1"
+               FontSize="Large" FontAttributes="Bold" 
+               VerticalOptions="StartAndExpand"  HorizontalOptions="EndAndExpand" />
+            </Grid>
+        </Frame>
+        <Button Text="Proceed to Checkout" Command="{Binding ProceedToCheckoutCommand}"
+               Style="{StaticResource BaseButton}"
+               Margin="10" />
+    </StackLayout>
+</ContentPage>

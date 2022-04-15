@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaxCalculatorApp.Views.OrderPlacerPage"
+             xmlns:viewmodel="clr-namespace:TaxCalculatorApp.ViewModels"
+             x:DataType="viewmodel:OrderPlacerPageViewModel">
+    <ContentPage.BindingContext>
+        <viewmodel:OrderPlacerPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="Place Your Order Here" 
+                   FontSize="Title" TextColor="DarkOliveGreen"
+                   FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Order Total" Grid.Row="0" Grid.Column="0"
+                   FontSize="Medium" FontAttributes="Bold" TextColor="Olive"
+                   Margin="0,20,0,10" VerticalTextAlignment="End"/>
+                <Entry Placeholder="Enter your order total" Text="{Binding StrOrderAmount, Mode=TwoWay}"
+                       Grid.Row="0" Grid.Column="1" VerticalTextAlignment="End"/>
+                <Label Text="Shipping" Grid.Row="1" Grid.Column="0"
+                   FontSize="Medium" FontAttributes="Bold" TextColor="Olive"
+                   Margin="0,20,0,0" VerticalTextAlignment="Center"/>
+                <RadioButton Content="$3.25 (Standard 5-7 Days)" FontSize="Small"
+                   Grid.Row="1" Grid.Column="1" VerticalOptions="EndAndExpand" 
+                   IsChecked="{Binding StandardShippingChecked, Mode=TwoWay}"/>
+                <RadioButton Content="$5.25 (Upgraded 1-2 Days)" FontSize="Small"
+                   Grid.Row="2" Grid.Column="1" VerticalOptions="EndAndExpand"
+                   IsChecked="{Binding UpgradedShippingChecked, Mode=TwoWay}"/>
+                <RadioButton Content="$15.25 (Premium Overnight)" FontSize="Small"
+                   Grid.Row="3" Grid.Column="1" VerticalOptions="EndAndExpand"
+                   IsChecked="{Binding PremiumShippingChecked, Mode=TwoWay}"/>
+                <Label Text="Tax on Order" Grid.Row="4" Grid.Column="0"
+                   FontSize="Medium" FontAttributes="Bold" TextColor="Olive"
+                   VerticalTextAlignment="End"/>
+                <Label Text="Calculated after shipping" FontSize="Small" Margin="10,0,0,0"
+                       Grid.Row="4" Grid.Column="1" VerticalTextAlignment="End"/>
+                <Label Text="*US orders only" FontSize="Medium" Margin="10,0,0,0" TextColor="DarkOliveGreen"
+                       Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" 
+                       VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+            </Grid>
+            <Button Text="Continue to Shipping"
+                Command="{Binding ContinueToShippingCommand}"
+                Style="{StaticResource BaseButton}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

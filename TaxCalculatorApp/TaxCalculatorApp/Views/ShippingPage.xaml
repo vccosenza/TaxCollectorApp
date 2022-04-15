@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaxCalculatorApp.Views.ShippingPage"
+             xmlns:viewmodel="clr-namespace:TaxCalculatorApp.ViewModels"
+             x:DataType="viewmodel:ShippingPageViewModel">
+    <ContentPage.BindingContext>
+        <viewmodel:ShippingPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="Enter Your Shipping Address:" 
+                   FontSize="Large" FontAttributes="Bold" TextColor="DarkOliveGreen"
+                   HorizontalTextAlignment="Center" Margin="0,20,0,10"/>
+            <Entry Placeholder="Street Address" Text="{Binding StreetAddress, Mode=TwoWay}"/>
+            <Entry Placeholder="City" Text="{Binding CityName, Mode=TwoWay}"/>
+            <Entry Placeholder="State" Text="{Binding StateName, Mode=TwoWay}" MaxLength="2"/>
+            <Entry Placeholder="Zip Code" Text="{Binding ZipCode, Mode=TwoWay}" MaxLength="5"/>
+            <Button Text="Continue to Order Summary" 
+                    Style="{StaticResource BaseButton}"
+                    Command="{Binding ContinueToOrderSummaryCommand}" 
+                    Margin="0,30,0,30"/>
+            <Button Text="Check Tax Rates for Location" 
+                    Padding="20" Margin="0,20,0,0"
+                    CornerRadius="10"  TextColor="Olive" FontAttributes="Bold"
+                    BackgroundColor="White" FontSize="Small" BorderColor="Olive"
+                    Command="{Binding GetTaxRatesCommand}"
+                    VerticalOptions="End"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

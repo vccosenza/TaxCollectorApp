@@ -15,5 +15,8 @@
         public const string APIERROR = "Error connecting to the Tax API";
         public const string COMINGSOON = "Coming Soon!";
         public const string CHECKOUTINPROG = "Check out page is in progress";
+        public const string STANDARDSHIPPING = "3.25";
+        public const string UPGRADEDSHIPPING = "5.25";
+        public const string PREMIUMSHIPPING = "15.25";
     }
 }

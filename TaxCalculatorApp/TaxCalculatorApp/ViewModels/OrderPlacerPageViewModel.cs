@@ -90,15 +90,15 @@ namespace TaxCalculatorApp.ViewModels
         {
             if (standardShippingChecked)
             {
-                return Decimal.Parse("3.25");
+                return decimal.Parse(Constants.STANDARDSHIPPING);
             }
             else if (upgradedShippingChecked)
             {
-                return Decimal.Parse("5.25");
+                return decimal.Parse(Constants.UPGRADEDSHIPPING);
             }
             else if (premiumShippingChecked)
             {
-                return Decimal.Parse("15.25");
+                return decimal.Parse(Constants.PREMIUMSHIPPING);
             }
             else
             {
@@ -116,8 +116,8 @@ namespace TaxCalculatorApp.ViewModels
                     await Application.Current.MainPage.DisplayAlert(Constants.ERROR, Constants.PLEASECOOSESHIPPINGOPTION, Constants.OK);
                     return;
                 }
-                DecOrderAmount = Decimal.Parse(StrOrderAmount);
-                if (!String.IsNullOrEmpty(StrOrderAmount) && Decimal.Parse(StrOrderAmount) > 0)
+                DecOrderAmount = decimal.Parse(StrOrderAmount);
+                if (!String.IsNullOrEmpty(StrOrderAmount) && decimal.Parse(StrOrderAmount) > 0)
                 {
                     OrderAmount customerOrder = new OrderAmount
                     {

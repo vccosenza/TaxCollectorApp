@@ -5,14 +5,27 @@
     <Application.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseButton" TargetType="Button">
-                <Setter Property="TextColor" 
-                        Value="White" />
-                <Setter Property="BackgroundColor" 
-                        Value="Olive" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Olive" />
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="Padding" Value="20"/>
                 <Setter Property="CornerRadius" Value="10"/>
                 <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style x:Key="BaseLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Olive" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style x:Key="OrderSummaryKey" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+            <Style x:Key="OrderSummaryValue" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+                <Setter Property="FontSize" Value="Small"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

@@ -64,6 +64,17 @@ namespace TaxCalculatorApp.ViewModels
             }
         }
 
+        decimal orderAmountWithTax;
+        public decimal OrderAmountWithTax
+        {
+            get => orderAmountWithTax;
+            set
+            {
+                orderAmountWithTax = value;
+                OnPropertyChanged();
+            }
+        }
+
         decimal taxAmount;
         public decimal TaxAmount
         {
@@ -102,6 +113,7 @@ namespace TaxCalculatorApp.ViewModels
             {
                 orderAmount = currentOrder.Amount;
                 shippingAmount = currentOrder.Shipping;
+                orderAmountWithTax = orderAmount + shippingAmount;
             }
             if (shippingLocation != null)
             {

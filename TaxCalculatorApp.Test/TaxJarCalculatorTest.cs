@@ -53,7 +53,7 @@ namespace TaxCalculatorApp.Test
             ITaxCollector taxCollector = new TaxCollector();
             ITaxService taxService = new TaxService(taxCollector);
             var t1 = Task.Run(() => taxService.GetRates(TestData.RaleighZipCode));
-            Assert.IsTrue(t1.Result.Rate != null && t1.Result.Rate.Combined_Rate == TestData.RaleighRate);
+            Assert.IsTrue(!String.IsNullOrEmpty(t1.Result.Rate.Combined_Rate));
 
         }
 

@@ -3,7 +3,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using TaxCalculatorApp.Helpers;
+using TaxCalculatorApp.Settings;
 using TaxCalculatorApp.Models;
 using TaxCalculatorApp.Services;
 using Xamarin.Forms;
@@ -41,12 +41,8 @@ namespace TaxCalculatorApp.Services
         public async Task<TaxedOrder> GetTaxes(Order order)
         {
             TaxedOrder taxOrder = null;
-
             var settings = new JsonSerializerSettings();
-            settings.ContractResolver = new JSONHelper();
-
-            string test = JsonConvert.SerializeObject(order, settings);
-            
+            settings.ContractResolver = new JSONContractResolver();
 
             HttpContent content = new StringContent(JsonConvert.SerializeObject(order, settings));
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(Constants.APPLICATION_JSON);

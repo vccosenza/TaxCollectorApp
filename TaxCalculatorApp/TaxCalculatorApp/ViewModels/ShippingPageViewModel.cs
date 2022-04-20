@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using TaxCalculatorApp.Helpers;
+using TaxCalculatorApp.Settings;
 using TaxCalculatorApp.Models;
 using TaxCalculatorApp.Services;
 using TaxCalculatorApp.Views;
@@ -32,7 +32,7 @@ namespace TaxCalculatorApp.ViewModels
             SetShippingAddress();
         }
 
-        private string streetAddress;
+        string streetAddress;
         public string StreetAddress
         {
             get => streetAddress;
@@ -43,7 +43,7 @@ namespace TaxCalculatorApp.ViewModels
             }
         }
 
-        private string cityName;
+        string cityName;
         public string CityName
         {
             get => cityName;
@@ -54,7 +54,7 @@ namespace TaxCalculatorApp.ViewModels
             }
         }
 
-        private string stateName;
+        string stateName;
         public string StateName
         {
             get => stateName;
@@ -65,7 +65,7 @@ namespace TaxCalculatorApp.ViewModels
             }
         }
 
-        private string zipCode;
+        string zipCode;
         public string ZipCode
         {
             get => zipCode;
@@ -160,13 +160,13 @@ namespace TaxCalculatorApp.ViewModels
         {
             try
             {
-                if (!string.IsNullOrEmpty(zipCode) && zipCode != "" && zipCode.Length == 5)
+                if (!String.IsNullOrEmpty(zipCode) && zipCode != "" && zipCode.Length == 5)
                 {
                     Rates taxRates = await taxService.GetRates(zipCode);
 
                     if (taxRates != null && taxRates.Rate != null)
                     {
-                        await Application.Current.MainPage.DisplayAlert("RATES FOR " + taxRates.Rate.City, "Combined Tax Rate: " + taxRates.Rate.Combined_Rate, Constants.OK);
+                        await Application.Current.MainPage.DisplayAlert($"RATES FOR {taxRates.Rate.City}", $"Combined Tax Rate: {taxRates.Rate.Combined_Rate}", Constants.OK);
 
                     }
                     return taxRates;

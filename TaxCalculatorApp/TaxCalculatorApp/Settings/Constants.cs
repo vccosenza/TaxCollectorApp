@@ -1,4 +1,4 @@
-﻿namespace TaxCalculatorApp.Helpers
+﻿namespace TaxCalculatorApp.Settings
 {
     public class Constants
     {
@@ -13,5 +13,7 @@
         public const string PLEASECOOSESHIPPINGOPTION = "Please Choose a Shipping Option";
         public const string PLEASEENTERVALIDZIP = "Please Enter Valid Zip Code";
         public const string APIERROR = "Error connecting to the Tax API";
+        public const string COMINGSOON = "Coming Soon!";
+        public const string CHECKOUTINPROG = "Check out page is in progress";
     }
 }

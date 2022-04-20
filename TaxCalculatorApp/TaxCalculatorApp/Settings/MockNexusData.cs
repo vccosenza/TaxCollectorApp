@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TaxCalculatorApp.Models;
 
-namespace TaxCalculatorApp.Helpers
+namespace TaxCalculatorApp.Settings
 {
     public class MockNexusData
     {

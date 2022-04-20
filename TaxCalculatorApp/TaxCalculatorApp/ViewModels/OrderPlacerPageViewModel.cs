@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using TaxCalculatorApp.Helpers;
+using TaxCalculatorApp.Settings;
 using TaxCalculatorApp.Models;
 using TaxCalculatorApp.Services;
 using TaxCalculatorApp.Views;
@@ -20,7 +20,7 @@ namespace TaxCalculatorApp.ViewModels
             dbService = App.RealmDBService;
         }
 
-        private decimal orderAmount;
+        decimal orderAmount;
         public decimal DecOrderAmount
         {
             get => orderAmount;
@@ -41,7 +41,8 @@ namespace TaxCalculatorApp.ViewModels
                 OnPropertyChanged();
             }
         }
-        private decimal shippingAmount;
+
+        decimal shippingAmount;
         public decimal ShippingAmount
         {
             get => shippingAmount;
@@ -52,7 +53,7 @@ namespace TaxCalculatorApp.ViewModels
             }
         }
 
-        private bool standardShippingChecked;
+        bool standardShippingChecked;
         public bool StandardShippingChecked
         {
             get => standardShippingChecked;
@@ -63,7 +64,7 @@ namespace TaxCalculatorApp.ViewModels
             }
         }
 
-        private bool upgradedShippingChecked;
+        bool upgradedShippingChecked;
         public bool UpgradedShippingChecked
         {
             get => upgradedShippingChecked;
@@ -73,7 +74,8 @@ namespace TaxCalculatorApp.ViewModels
                 OnPropertyChanged();
             }
         }
-        private bool premiumShippingChecked;
+
+        bool premiumShippingChecked;
         public bool PremiumShippingChecked
         {
             get => premiumShippingChecked;

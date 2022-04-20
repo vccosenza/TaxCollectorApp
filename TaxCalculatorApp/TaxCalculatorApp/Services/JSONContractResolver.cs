@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json.Serialization;
 
-namespace TaxCalculatorApp.Helpers
+namespace TaxCalculatorApp.Services
 {
-    public class JSONHelper : DefaultContractResolver
+    public class JSONContractResolver : DefaultContractResolver
     {
         protected override string ResolvePropertyName(string propertyName)
         {

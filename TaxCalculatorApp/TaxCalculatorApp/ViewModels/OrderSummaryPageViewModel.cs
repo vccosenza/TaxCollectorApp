@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using TaxCalculatorApp.Helpers;
+using TaxCalculatorApp.Settings;
 using TaxCalculatorApp.Models;
 using TaxCalculatorApp.Services;
 using Xamarin.Forms;
@@ -18,12 +18,6 @@ namespace TaxCalculatorApp.ViewModels
         OrderAmount currentOrder;
         TaxedOrder taxedOrder;
 
-        string shippingAddress;
-        decimal orderAmount;
-        decimal shippingAmount;
-        decimal taxAmount;
-        decimal totalAmount;
-
         public OrderSummaryPageViewModel()
         {
             ProceedToCheckoutCommand = new Command(async () => await ProceedToCheckout());
@@ -35,9 +29,9 @@ namespace TaxCalculatorApp.ViewModels
             shippingLocation = dbService.GetLocation();
             taxedOrder = dbService.GetTaxedOrder();
             SetOrderSummary();
-
         }
 
+        string shippingAddress;
         public string ShippingAddress
         {
             get => shippingAddress;
@@ -48,6 +42,7 @@ namespace TaxCalculatorApp.ViewModels
             }
         }
 
+        decimal orderAmount;
         public decimal OrderAmount
         {
             get => orderAmount;
@@ -58,6 +53,7 @@ namespace TaxCalculatorApp.ViewModels
             }
         }
 
+        decimal shippingAmount;
         public decimal ShippingAmount
         {
             get => shippingAmount;
@@ -68,6 +64,7 @@ namespace TaxCalculatorApp.ViewModels
             }
         }
 
+        decimal taxAmount;
         public decimal TaxAmount
         {
             get => taxAmount;
@@ -78,6 +75,7 @@ namespace TaxCalculatorApp.ViewModels
             }
         }
 
+        decimal totalAmount;
         public decimal TotalAmount
         {
             get => totalAmount;
@@ -90,7 +88,7 @@ namespace TaxCalculatorApp.ViewModels
 
         async Task ProceedToCheckout()
         {
-            await Application.Current.MainPage.DisplayAlert("Coming Soon!", "Check out page is in progress", Constants.OK);
+            await Application.Current.MainPage.DisplayAlert(Constants.COMINGSOON, Constants.CHECKOUTINPROG, Constants.OK);
         }
 
         async Task UpdateShippingAddress()
@@ -107,8 +105,7 @@ namespace TaxCalculatorApp.ViewModels
             }
             if (shippingLocation != null)
             {
-                shippingAddress = shippingLocation.StreetAddress + " " + shippingLocation.City +
-                    ", " + shippingLocation.State + " " + shippingLocation.Zip;
+                shippingAddress = $"{shippingLocation.StreetAddress} {shippingLocation.City}, {shippingLocation.State} {shippingLocation.Zip}";
             }
             if (taxedOrder != null)
             {

@@ -1,5 +1,4 @@
-﻿using TaxCalculatorApp.Models;
-using TaxCalculatorApp.Services;
+﻿using TaxCalculatorApp.Services;
 using TaxCalculatorApp.Views;
 using Xamarin.Forms;
 
@@ -13,7 +12,7 @@ namespace TaxCalculatorApp
         {
             InitializeComponent();
             dbService = new DbService();
-            taxService = new TaxService(DependencyService.Get<ITaxCollector>());
+            taxService = new TaxService(new TaxCollector());
             MainPage = new NavigationPage(new OrderPlacerPage());
         }
 
